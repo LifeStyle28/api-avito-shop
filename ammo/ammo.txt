@@ -1,0 +1,44 @@
+134
+POST /api/sendCoin HTTP/1.1
+Accept: application/json
+Content-type: application/json
+Content-Length: 25
+
+toUser=some_user&amount=1
+
+137
+POST /api/auth HTTP/1.1
+Accept: application/json
+Content-type: application/json
+Content-Length: 32
+
+username=some_user&password=pass
+
+139
+POST /api/auth HTTP/1.1
+Accept: application/json
+Content-type: application/json
+Content-Length: 34
+
+username=some_user1&password=pass1
+
+98 get_info
+GET /api/info HTTP/1.1
+Host: localhost:8080
+User-Agent: tank
+Accept: */*
+Connection: Close
+
+105 get_t_shirt
+GET /api/buy/t-shirt HTTP/1.1
+Host: localhost:8080
+User-Agent: tank
+Accept: */*
+Connection: Close
+
+101 get_cup
+GET /api/buy/cup HTTP/1.1
+Host: localhost:8080
+User-Agent: tank
+Accept: */*
+Connection: Close

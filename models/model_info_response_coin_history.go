@@ -1,0 +1,37 @@
+package models
+
+type InfoResponseCoinHistory struct {
+	Received []InfoResponseCoinHistoryReceivedInner `json:"received,omitempty"`
+
+	Sent []InfoResponseCoinHistorySentInner `json:"sent,omitempty"`
+}
+
+// AssertInfoResponseCoinHistoryRequired checks if the required fields are not zero-ed
+func AssertInfoResponseCoinHistoryRequired(obj InfoResponseCoinHistory) error {
+	for _, el := range obj.Received {
+		if err := AssertInfoResponseCoinHistoryReceivedInnerRequired(el); err != nil {
+			return err
+		}
+	}
+	for _, el := range obj.Sent {
+		if err := AssertInfoResponseCoinHistorySentInnerRequired(el); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+// AssertInfoResponseCoinHistoryConstraints checks if the values respects the defined constraints
+func AssertInfoResponseCoinHistoryConstraints(obj InfoResponseCoinHistory) error {
+	for _, el := range obj.Received {
+		if err := AssertInfoResponseCoinHistoryReceivedInnerConstraints(el); err != nil {
+			return err
+		}
+	}
+	for _, el := range obj.Sent {
+		if err := AssertInfoResponseCoinHistorySentInnerConstraints(el); err != nil {
+			return err
+		}
+	}
+	return nil
+}

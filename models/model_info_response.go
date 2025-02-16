@@ -1,0 +1,37 @@
+package models
+
+type InfoResponse struct {
+
+	// Количество доступных монет.
+	Coins int32 `json:"coins,omitempty"`
+
+	Inventory []InfoResponseInventoryInner `json:"inventory,omitempty"`
+
+	CoinHistory InfoResponseCoinHistory `json:"coinHistory,omitempty"`
+}
+
+// AssertInfoResponseRequired checks if the required fields are not zero-ed
+func AssertInfoResponseRequired(obj InfoResponse) error {
+	for _, el := range obj.Inventory {
+		if err := AssertInfoResponseInventoryInnerRequired(el); err != nil {
+			return err
+		}
+	}
+	if err := AssertInfoResponseCoinHistoryRequired(obj.CoinHistory); err != nil {
+		return err
+	}
+	return nil
+}
+
+// AssertInfoResponseConstraints checks if the values respects the defined constraints
+func AssertInfoResponseConstraints(obj InfoResponse) error {
+	for _, el := range obj.Inventory {
+		if err := AssertInfoResponseInventoryInnerConstraints(el); err != nil {
+			return err
+		}
+	}
+	if err := AssertInfoResponseCoinHistoryConstraints(obj.CoinHistory); err != nil {
+		return err
+	}
+	return nil
+}

@@ -1,0 +1,31 @@
+version: 1
+
+run:
+  timeout: 5m
+  skip-files:
+    - ".*_test.go"
+  skip-dirs:
+    - "ammo/*"
+    - "migrations/*"
+    - "tests/*"
+
+output:
+  format: colored-line-number
+  print-issued-lines: true
+
+linters:
+  enable:
+    - govet
+    - golint
+    - gocritic
+    - goimports
+    - staticcheck
+  disable:
+    - errcheck
+    - deadcode
+
+  settings:
+    govet:
+      check-shadowing: true
+    golint:
+      min-confidence: 0.8
